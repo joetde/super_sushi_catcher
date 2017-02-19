@@ -1,20 +1,30 @@
 
-var g_game = new Phaser.Game(800, 600, Phaser.AUTO, 'phaser-template', {preload: preload, create: create});
-var g_music;
+ssc.game = new Phaser.Game(800, 600, Phaser.AUTO, 'ssc',
+    {preload: preload,
+     create: create,
+     update: update,
+     render: render});
+
+var sushi_sprite;
 
 function preload() {
     // load resources
-    g_game.load.audio('main_loop', 'res/music/main_loop.mp3');
+    ssc.sound.load();
+    ssc.game.load.image('sushi', 'res/sprite/salmon_sushi_1.png');
 }
 
 function create() {
     // start game
-    g_game.stage.backgroundColor = '#2d2d2d';
+    ssc.sound.init();
 
-    g_music = g_game.add.audio('main_loop');
-    g_game.sound.setDecodedCallback(g_music, on_music_decoded, this);
+    ssc.game.stage.backgroundColor = '#2d2d2d';
+    sushi_sprite = ssc.game.add.sprite(ssc.game.world.width, ssc.game.world.centerY, 'sushi');
 }
 
-function on_music_decoded() {
-    g_music.loopFull(0.6);
+function update() {
+    sushi_sprite.x -= 1;
+}
+
+function render() {
+    // update graphics
 }
