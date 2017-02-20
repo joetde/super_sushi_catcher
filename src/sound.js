@@ -1,6 +1,6 @@
 
 ssc.sound = {
-    quiet : false,
+    quiet : true,
 
     load : function() {
         ssc.game.load.audio('main_loop', 'res/music/main_loop.mp3');
