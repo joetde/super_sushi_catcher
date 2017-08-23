@@ -1,4 +1,7 @@
 
+/**
+ * Sound module. Handling of music and sound effects.
+ */
 ssc.sound = {
     quiet : true,
 
@@ -15,3 +18,15 @@ ssc.sound = {
         if (!ssc.sound.quiet) { ssc.sound.music.loopFull(0.6); }
     }
 };
+
+/**
+ * Voice synthetizer, for fun
+ */
+ssc.sound.voice = {
+    say : function(what_to_say) {
+        if (!ssc.sound.quiet) {
+            var msg = new SpeechSynthesisUtterance(what_to_say);
+            window.speechSynthesis.speak(msg);
+        }
+    }
+}
