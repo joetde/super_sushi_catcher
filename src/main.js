@@ -5,8 +5,6 @@ ssc.game = new Phaser.Game(800, 600, Phaser.AUTO, 'ssc',
      update: update,
      render: render});
 
-var sushi_sprite;
-
 function preload() {
     // load resources
     ssc.sound.load();
