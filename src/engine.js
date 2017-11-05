@@ -16,14 +16,11 @@ ssc.engine = {
     },
     
     update : function() {
-        // TODO engine update
-        // ticking
     },
 
     provide_new_sushi : function() {
-        // TODO random type
-        var sushi_type = ssc.sprite.sushi_types.SALMON;
-        ssc.sprite.add_rolling(sushi_type);
+        var random_idx = Math.floor((Math.random() * ssc.sprite.ALL_SUSHI_TYPES.length));
+        ssc.sprite.add_rolling(ssc.sprite.ALL_SUSHI_TYPES[random_idx]);
     },
 
     on_sushi_clicked : function(sushi_sprite) {
@@ -39,7 +36,7 @@ ssc.engine = {
     },
 
     required_type : function() {
-        // TODO rand
+        // TODO generate required types
         return ssc.sprite.sushi_types.SALMON;
     },
 

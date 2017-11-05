@@ -4,11 +4,12 @@ ssc.sprite = {
     sprite_counter : 0,
 
     load : function() {
-        ssc.game.load.spritesheet('salmon_sushi', 'res/sprite/salmon_sushi_sprite.png', 100, 100);
+        ssc.game.load.spritesheet(ssc.sprite.sushi_types.SALMON, 'res/sprite/salmon_sushi_sprite.png', 100, 100);
+        ssc.game.load.spritesheet(ssc.sprite.sushi_types.TUNA, 'res/sprite/tuna_sushi_sprite.png', 100, 100);
+        ssc.game.load.spritesheet(ssc.sprite.sushi_types.OMELETTE, 'res/sprite/omelette_sushi_sprite.png', 100, 100);
     },
 
     init : function() {
-        ssc.sprite.add_rolling(ssc.sprite.sushi_types.SALMON);
     },
 
     update : function() {
@@ -25,10 +26,9 @@ ssc.sprite = {
         }
     },
 
-    add_rolling : function(type) {
-        // TODO support different types
-        var curr = ssc.game.add.sprite(ssc.game.world.width, ssc.game.world.centerY, 'salmon_sushi');
-        curr.ssc_type = type;
+    add_rolling : function(sushi_type) {
+        var curr = ssc.game.add.sprite(ssc.game.world.width, ssc.game.world.centerY, sushi_type);
+        curr.ssc_type = sushi_type;
 
         curr.ssc_id = ssc.sprite.sprite_counter;
         ssc.sprite.sprite_counter++;
@@ -60,7 +60,11 @@ ssc.sprite = {
 };
 
 ssc.sprite.sushi_types = {
-    SALMON : 0,
-    TUNA : 1,
-    OMELETTE : 2
+    SALMON : "salmon_sushi",
+    TUNA : "tuna_sushi",
+    OMELETTE : "omelette_sushi"
 };
+
+ssc.sprite.ALL_SUSHI_TYPES = [ssc.sprite.sushi_types.SALMON,
+                              ssc.sprite.sushi_types.TUNA,
+                              ssc.sprite.sushi_types.OMELETTE];
