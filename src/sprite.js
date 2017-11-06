@@ -21,7 +21,6 @@ ssc.sprite = {
             if (curr.x + curr.width < 0) {
                 curr.destroy();
                 ssc.sprite.rolling_sprites.splice(i, 1);
-                //ssc.sprite.add_rolling(ssc.sprite.sushi_types.SALMON);
             }
         }
     },

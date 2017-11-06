@@ -8,11 +8,14 @@ ssc.engine = {
         ssc.engine.spawn_timer = ssc.game.time.create(false);
         // TODO allow update spawning frequency
         ssc.engine.spawn_timer.loop(750, ssc.engine.spawn_new_sushi, this);
+        ssc.engine.hud.score_text = ssc.game.add.text(ssc.game.world.width - 100, 32, '', { font: "15px Arial", fill: "#19de65"});
     },
 
     init : function() {
         ssc.engine.spawn_new_sushi();
         ssc.engine.spawn_timer.start();
+        ssc.engine.score = 0;
+        ssc.engine.hud.score_text.text = ssc.engine.score;
     },
     
     update : function() {
@@ -26,6 +29,9 @@ ssc.engine = {
     on_sushi_clicked : function(sushi_sprite) {
         // clear clicked sushi
         ssc.sprite.remove_sprite(sushi_sprite);
+
+        ssc.engine.score++;
+        ssc.engine.hud.score_text.text = ssc.engine.score;
 
         // check type for scoring
         if (sushi_sprite.ssc_type == ssc.engine.required_type()) {
@@ -44,3 +50,5 @@ ssc.engine = {
         ssc.engine.provide_new_sushi();
     }
 };
+
+ssc.engine.hud = {}
