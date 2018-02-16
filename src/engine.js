@@ -34,17 +34,25 @@ ssc.engine = {
 
         // check type for scoring
         if (sushi_sprite.ssc_type == ssc.engine.required_type()) {
-            ssc.engine.score++;
-            // TODO sounds
-            // TODO update cards (remove matched)
+            ssc.engine.on_sushi_clicked_success();
         } else {
-            ssc.engine.score--;
-            // TODO sounds
-            // TODO lose condition
+            ssc.engine.on_sushi_clicked_missed();
         }
 
         // refresh score text
         ssc.engine.hud.score_text.text = ssc.engine.score;
+    },
+
+    on_sushi_clicked_missed : function() {
+        ssc.engine.score--;
+        // TODO sounds
+        // TODO lose condition
+    },
+
+    on_sushi_clicked_success : function() {
+        ssc.engine.score++;
+        // TODO sounds
+        // TODO update cards (remove matched)
     },
 
     required_type : function() {
