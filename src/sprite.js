@@ -1,6 +1,7 @@
 
 ssc.sprite = {
     rolling_sprites : [],
+    card_sprites : [],
     sprite_counter : 0,
 
     load : function() {
@@ -39,6 +40,13 @@ ssc.sprite = {
         curr.animations.play('jump', 24, true);
 
         ssc.sprite.rolling_sprites.push(curr);
+    },
+
+    add_card : function(sushi_type) {
+        // TODO create sprite
+        var curr = {};
+        curr.ssc_type = sushi_type;
+        ssc.sprite.card_sprites.push(curr);
     },
 
     on_sushi_clicked : function(sprite) {

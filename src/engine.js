@@ -16,6 +16,8 @@ ssc.engine = {
         ssc.engine.spawn_timer.start();
         ssc.engine.score = 0;
         ssc.engine.hud.score_text.text = ssc.engine.score;
+        // TODO random type
+        ssc.sprite.add_card(ssc.sprite.sushi_types.SALMON);
     },
     
     update : function() {
@@ -30,20 +32,24 @@ ssc.engine = {
         // clear clicked sushi
         ssc.sprite.remove_sprite(sushi_sprite);
 
-        ssc.engine.score++;
-        ssc.engine.hud.score_text.text = ssc.engine.score;
-
         // check type for scoring
         if (sushi_sprite.ssc_type == ssc.engine.required_type()) {
-            // TODO good catch
+            ssc.engine.score++;
+            // TODO sounds
+            // TODO update cards (remove matched)
         } else {
-            // TODO bad catch buddy
+            ssc.engine.score--;
+            // TODO sounds
+            // TODO lose condition
         }
+
+        // refresh score text
+        ssc.engine.hud.score_text.text = ssc.engine.score;
     },
 
     required_type : function() {
-        // TODO generate required types
-        return ssc.sprite.sushi_types.SALMON;
+        // TODO mechanism to prevent array to be empty
+        return ssc.sprite.card_sprites[0].ssc_type;
     },
 
     spawn_new_sushi : function() {
